@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/user_home_page"
+            android:icon="@drawable/home_page"
+            android:title="@string/view_registered_exams" />
+        <item
+            android:id="@+id/view_registered_exams"
+            android:icon="@drawable/home_page"
+            android:title="@string/view_registered_exams" />
+        <item
+            android:id="@+id/password_change"
+            android:icon="@android:drawable/ic_partial_secure"
+            android:title="@string/change_password" />
+        <item
+            android:id="@+id/refer_a_friend"
+            android:icon="@android:drawable/ic_menu_share"
+            android:title="@string/refer_a_friend" />
+        <item
+            android:id="@+id/suggestions"
+            android:icon="@android:drawable/ic_dialog_email"
+            android:title="@string/suggestion" />
+        <item
+            android:id="@+id/feedback"
+            android:icon="@android:drawable/stat_notify_chat"
+            android:title="@string/feedback" />
+    </group>
+
+</menu>
