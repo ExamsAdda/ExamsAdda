@@ -34,7 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.co.examsadda.R;
-import in.co.examsadda.controller.UserDao;
+//import in.co.examsadda.controller.UserDao;
 import in.co.examsadda.model.User;
 
 import static android.Manifest.permission.READ_CONTACTS;
@@ -317,7 +317,7 @@ public class UserLoginActivity extends AppCompatActivity implements LoaderCallba
             User user=new User();
             user.setEmailId(this.userName);
             user.setPassword(this.password);
-            this.user = new UserDao().login(new User());
+            //this.user = new UserDao().login(new User());
             return (this.user != null)? true:false;
         }
 

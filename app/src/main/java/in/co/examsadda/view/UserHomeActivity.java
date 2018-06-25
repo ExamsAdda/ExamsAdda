@@ -1,6 +1,7 @@
 package in.co.examsadda.view;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -25,7 +26,7 @@ import in.co.examsadda.view.fragment.PasswordChangeFragment;
 import in.co.examsadda.view.fragment.ReferFragment;
 import in.co.examsadda.view.fragment.SuggestionsFragment;
 
-public class UserHomeActivity extends AppCompatActivity {
+public class UserHomeActivity extends AppCompatActivity implements HomeFragment.OnFragmentInteractionListener{
     FloatingActionButton fab=null;
     Toolbar toolbar=null;
     DrawerLayout drawer=null;
@@ -350,5 +351,10 @@ public class UserHomeActivity extends AppCompatActivity {
             fab.show();
         else
             fab.hide();
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
