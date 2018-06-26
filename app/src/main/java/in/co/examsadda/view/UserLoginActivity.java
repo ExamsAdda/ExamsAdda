@@ -3,22 +3,20 @@ package in.co.examsadda.view;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
-
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -34,10 +32,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.co.examsadda.R;
-//import in.co.examsadda.controller.UserDao;
-import in.co.examsadda.model.User;
+import in.co.examsadda.vo.User;
 
 import static android.Manifest.permission.READ_CONTACTS;
+
+//import in.co.examsadda.controller.UserDao;
 
 /**
  * A login screen that offers login via email/password.
@@ -72,10 +71,10 @@ public class UserLoginActivity extends AppCompatActivity implements LoaderCallba
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_login);
         // Set up the login form.
-        userID = (AutoCompleteTextView) findViewById(R.id.emailACTV);
+        userID = findViewById(R.id.emailACTV);
         populateAutoComplete();
 
-        userPassword = (EditText) findViewById(R.id.passwordET);
+        userPassword = findViewById(R.id.passwordET);
         userPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -87,7 +86,7 @@ public class UserLoginActivity extends AppCompatActivity implements LoaderCallba
             }
         });
 
-        Button userSignInButton = (Button) findViewById(R.id.user_sign_in_button);
+        Button userSignInButton = findViewById(R.id.user_sign_in_button);
         userSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -318,7 +317,7 @@ public class UserLoginActivity extends AppCompatActivity implements LoaderCallba
             user.setEmailId(this.userName);
             user.setPassword(this.password);
             //this.user = new UserDao().login(new User());
-            return (this.user != null)? true:false;
+            return this.user != null;
         }
 
         @Override
