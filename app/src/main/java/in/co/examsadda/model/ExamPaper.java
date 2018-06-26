@@ -8,61 +8,37 @@ import in.co.examsadda.vo.PracticePaper;
 public class ExamPaper {
 
     private PracticePaper practicePaper;
-    private List<ExamSection> sections;
+    private List<SectionQuestions> sections;
 
     /**
      *
      */
     public ExamPaper() {
         practicePaper = new PracticePaper();
-        sections = new ArrayList<ExamSection>();
+        sections = new ArrayList<SectionQuestions>();
     }
 
-    /**
-     * @param examPaper
-     * @param sections
-     */
-    public ExamPaper(PracticePaper examPaper, List<ExamSection> sections) {
-        this.practicePaper = examPaper;
-        this.sections = sections;
-    }
-
-    /**
-     * @return the examPaper
-     */
-    public PracticePaper getExamPaper() {
+    public PracticePaper getPracticePaper() {
         return practicePaper;
     }
 
-    /**
-     * @param examPaper the examPaper to set
-     */
-    public void setExamPaper(PracticePaper examPaper) {
-        this.practicePaper = examPaper;
+    public void setPracticePaper(PracticePaper practicePaper) {
+        this.practicePaper = practicePaper;
     }
 
-    /**
-     * @return the sections
-     */
-    public List<ExamSection> getSections() {
+    public List<SectionQuestions> getSections() {
         return sections;
     }
 
-    /**
-     * @param sections the sections to set
-     */
-    public void setSections(List<ExamSection> sections) {
+    public void setSections(List<SectionQuestions> sections) {
         this.sections = sections;
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString() {
-        return "ExamPaper [examPaper=" + practicePaper + ", sections=" + sections + "]";
+        return "ExamPaper{" +
+                "practicePaper=" + practicePaper +
+                ", sections=" + sections +
+                '}';
     }
-
 }

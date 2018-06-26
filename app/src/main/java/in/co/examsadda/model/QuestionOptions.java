@@ -16,7 +16,7 @@ public class QuestionOptions {
      */
     public QuestionOptions() {
         question = new Question();
-        options = new ArrayList<>();
+        options = new ArrayList<Option>();
     }
 
     /**
