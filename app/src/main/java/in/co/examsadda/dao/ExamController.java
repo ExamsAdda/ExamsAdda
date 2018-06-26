@@ -17,8 +17,8 @@ public class ExamController {
     public static void main(String... s) {
         ExamController examController = new ExamController();
         try {
-            examController.getExamPaperByExamPaperId(1);
-            System.out.println();
+            ExamPaper examPaperByExamPaperId = examController.getExamPaperByExamPaperId(1);
+            System.out.println(examPaperByExamPaperId);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -27,10 +27,10 @@ public class ExamController {
 
     /* This method is for single practice paper based on practice paper id */
     public ExamPaper getExamPaperByExamPaperId(Integer examPaperId) {
-        return getExamPaper(examPaperId);
+        return getExamPaper(examPaperId, 1);
     }
 
-    public List<ExamPaper> getExamPapersByCourseId(Integer examId) {
+    public List<ExamPaper> getExamPapersByCourseId(Integer courseId) {
         List<ExamPaper> examPapers = new ArrayList<ExamPaper>();
         for (int i = 1; i <= 20; i++) {
             examPapers.add(getExamPaperByExamPaperId(i));
@@ -38,17 +38,23 @@ public class ExamController {
         return examPapers;
     }
 
-    private ExamPaper getExamPaper(int practicePaperId) {
+    private ExamPaper getExamPaper(int practicePaperId, int courseId) {
         ExamPaper examPaper = new ExamPaper();
-        examPaper.getPracticePaper();
+        examPaper.setPracticePaper(getPracticePaper(practicePaperId, courseId));
         for (int i = 1; i <= 5; i++) {
             examPaper.getSections().add(getSectionQuestions(i, practicePaperId));
         }
         return examPaper;
     }
 
-    private PracticePaper getPracticePaper() {
+    private PracticePaper getPracticePaper(int practicePaperId, int courseId) {
         PracticePaper practicePaper = new PracticePaper();
+        practicePaper.setPaperId(practicePaperId);
+        practicePaper.setActive(true);
+        practicePaper.setPaperNameInEnglish("Practice Paper : " + practicePaperId);
+        practicePaper.setPaperNameInRegional("అభ్యాస పరీక్ష : " + practicePaperId);
+        practicePaper.setDuration(180);
+        practicePaper.setCourseId(courseId);
         return practicePaper;
     }
 
@@ -77,7 +83,7 @@ public class ExamController {
         questionOptions.setQuestion(getQuestion(questionId, sectionId));
         int optionIndicator = 65;
         for (int i = 0; i <= questionOptions.getQuestion().getNumberOfOptions(); i++) {
-            char oi = (char) optionIndicator;
+            char oi = (char) optionIndicator++;
             questionOptions.getOptions().add(getOption(questionOptions.getQuestion().getQuestionId(), questionOptions.getQuestion().getQuestionHasImage(), oi));
         }
         return questionOptions;
@@ -90,13 +96,14 @@ public class ExamController {
         question.setNumberOfOptions(5);
         question.setQuestionInEnglish("Question : " + questionId);
         question.setQuestionInRegional("ప్రశ్న : " + questionId);
-        if (questionId % 5 == 0) {
+        if (questionId % 5 != 0) {
             question.setQuestionHasImage(false);
         } else {
-            question.setQuestionHasImage(false);
+            question.setQuestionHasImage(true);
             question.setQuestionImageInEnglishURL("http://placehold.it/120x120&text=image1");
             question.setQuestionImageInRegionalURL("http://placehold.it/120x120&text=image2");
         }
+        question.setAnswer('A');
         question.setActive(true);
         return question;
     }
