@@ -13,7 +13,7 @@ import in.co.examsadda.vo.Section;
 
 public class ExamController {
 
-
+    static Integer optionId;
     public static void main(String... s) {
         ExamController examController = new ExamController();
         try {
@@ -110,13 +110,14 @@ public class ExamController {
 
     private Option getOption(int questionId, boolean hasImage, char optionIndicator) {
         Option option = new Option();
+        option.setOptionId(optionId++);
         option.setActive(true);
         option.setQuestionId(questionId);
         option.setOptionIndicator(optionIndicator);
         option.setOptionValueInEnglish(" Option : " + optionIndicator);
         option.setOptionValueInRegional("ఎంపిక : " + optionIndicator);
         if (hasImage) {
-            option.setOptionImageRegionalURL("http://placehold.it/120x120&text=image3");
+            option.setOptionImageInEnglishURL("http://placehold.it/120x120&text=image3");
             option.setOptionImageRegionalURL("http://placehold.it/120x120&text=image4");
         }
         return option;
