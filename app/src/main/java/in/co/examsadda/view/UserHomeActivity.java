@@ -25,8 +25,9 @@ import in.co.examsadda.view.fragment.HomeFragment;
 import in.co.examsadda.view.fragment.PasswordChangeFragment;
 import in.co.examsadda.view.fragment.ReferFragment;
 import in.co.examsadda.view.fragment.SuggestionsFragment;
+import in.co.examsadda.view.fragment.dummy.DummyContent;
 
-public class UserHomeActivity extends AppCompatActivity implements HomeFragment.OnFragmentInteractionListener{
+public class UserHomeActivity extends AppCompatActivity implements HomeFragment.OnFragmentInteractionListener,ExamFragment.OnListFragmentInteractionListener{
     FloatingActionButton fab=null;
     Toolbar toolbar=null;
     DrawerLayout drawer=null;
@@ -355,6 +356,11 @@ public class UserHomeActivity extends AppCompatActivity implements HomeFragment.
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onListFragmentInteraction(DummyContent.DummyItem item) {
 
     }
 }
